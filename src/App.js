@@ -1,19 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Currency from './Currency';
+
+const URL = 'https://api.coinmarketcap.com/v1/ticker/?convert=GBP&limit=10';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      results: []
+    };
+  }
+
+  getResults = result => {
+    fetch(URL)
+    .then(response => response.json())
+    .then(result => {
+      this.setState({
+        results: result
+      })
+    })
+  }
+
+  componentDidMount() {
+    this.getResults();
+  }
+
   render() {
+
+    const results = this.state.results;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <ul className="currencies">
+        { results.map(ele =>
+          <Currency
+            key={ele.id}
+            details={ele}
+          />)
+        }
+      </ul>
     );
   }
 }

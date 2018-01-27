@@ -1,0 +1,6 @@
+.percentage-change {
+  display: flex;
+}
+.percentage-change > span {
+  margin: 0 10px;
+}

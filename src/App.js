@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Currency from './Currency';
+import Currency from './components/Currency';
 
 const URL = 'https://api.coinmarketcap.com/v1/ticker/?convert=GBP&limit=10';
 

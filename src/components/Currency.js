@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../styles/currency.css';
+
 
 class Currency extends Component {
 
